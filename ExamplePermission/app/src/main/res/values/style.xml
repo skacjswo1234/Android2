@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <style name="Alert" parent="android:Theme.Dialog">
+        <item name="android:windowBackground">@drawable/alertbackground</item>
+        <item name="android:width">250dp</item>
+    </style>
+</resources>

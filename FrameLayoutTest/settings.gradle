@@ -1,0 +1,2 @@
+rootProject.name = "FrameLayoutTest"
+include ':app'

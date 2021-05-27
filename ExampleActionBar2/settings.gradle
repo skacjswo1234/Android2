@@ -1,0 +1,2 @@
+rootProject.name = "ExampleActionBar2"
+include ':app'
