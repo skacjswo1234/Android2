@@ -8,9 +8,12 @@ import android.os.Bundle;
 import android.telephony.SmsMessage;
 import android.util.Log;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class SmsReceiver extends BroadcastReceiver {
+    public SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
 
     // SMS(문자메시지)가 핸드폰으로 전달 됬을 때 이 메서드가 호출됨.
     // android.provider.Telephony.SMS_RECEIVED를 매니패스트에 등록해서...
@@ -31,6 +34,8 @@ public class SmsReceiver extends BroadcastReceiver {
             // util 패키지에 있는 Date
             Date receivedDate = new Date(messages[0].getTimestampMillis());
             Log.i("SmsReceiver","SMS receiver date : " + receivedDate.toString());
+
+            sendToActivity(context, sender, contents, receivedDate);
         }//end if
     }// end onReceive
 
@@ -52,5 +57,25 @@ public class SmsReceiver extends BroadcastReceiver {
         }
 
         return messages;
+    }
+
+    private void sendToActivity(Context context , String sender,String content, Date receivedDate) {
+        // 문자 메세지의 발신자 발신내용 수신시간을 출력할 화면을 띄워라
+        Intent myIntent = new Intent(context, smsActivity.class);
+
+            //화면을 띄울 때 아래와 같은 플래그가 적용된 채로 띄워라
+            // FLAG_ACTIVITY_NEW_TASK -> 새로운 태스크를 생성해서 태스크 안에 액티비티 추가
+            // FLAG_ACTIVITY_CLEAR_TOP -> 태스크 내같은 액티비티가 여러개 만들어져있었을때 모두 제거하고 하나만 남기는 플래그
+            // FLAG_ACTIVITY_SINGLE_TOP -> 태스크 내 액티비티가 이미 만들어져있다면 만들어져있는 액티비티를 활성화 시켜라
+            myIntent.addFlags(
+                    Intent.FLAG_ACTIVITY_NEW_TASK |
+                    Intent.FLAG_ACTIVITY_SINGLE_TOP |
+                    Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+            myIntent.putExtra("sender", sender);
+            myIntent.putExtra("content",content);
+            myIntent.putExtra("receiveDate",sdf.format(receivedDate);
+
+            context.startActivity(myIntent);
     }
 }
