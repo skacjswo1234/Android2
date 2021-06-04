@@ -48,6 +48,12 @@ public class PersonProvider extends ContentProvider {
         return false;
     }
 
+    @Nullable
+    @Override
+    public Cursor query( Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
+        return null;
+    }
+
     // 내용 제공자를 통해서 Read를 할때 호출되는 콜백 메서드
     // projection -> 어떤 칼럼을 조회할 것인지 (null이 전달된다면 모든 칼럼을 조회)
     // selection -> WHERE절에 들어갈 조건 (null이 전달된다면 모든 데이터(레코드)를 조회)
@@ -87,6 +93,12 @@ public class PersonProvider extends ContentProvider {
             default:
                 throw new IllegalArgumentException("알수없는 URI :" + uri);
         }
+    }
+
+    @Nullable
+    @Override
+    public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
+        return null;
     }
 
     // 내용제공자를 통해서 insert를 할때 호출 되는 콜백 메서드
