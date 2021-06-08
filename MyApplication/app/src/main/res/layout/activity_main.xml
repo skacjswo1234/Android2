@@ -8,9 +8,10 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/main_loginBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="clickLoginBtn"
         android:text="로그인" />
 
     <Button
