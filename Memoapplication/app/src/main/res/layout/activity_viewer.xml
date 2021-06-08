@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_memo_input"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context="com.tistory.massivcode.memo.ViewerActivity">
+
+    <EditText
+        android:id="@+id/viewer_title_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:textStyle="bold"
+        android:hint="제목을 입력하세요" />
+
+    <EditText
+        android:id="@+id/viewer_contents_et"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/viewer_title_et"
+        android:background="@null"
+        android:gravity="top"
+        android:hint="내용을 입력하세요" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/viewer_save_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:src="@android:drawable/ic_menu_save" />
+
+</RelativeLayout>
